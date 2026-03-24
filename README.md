@@ -45,6 +45,12 @@ Wawasan utama dari dashboard meliputi:
 *   **Sinyal Akademik Dini:** Penurunan performa akademik (IPK mendekati 0) dan rendahnya jumlah SKS yang lulus pada Semester 1 merupakan prediktor terkuat kegagalan studi.
 *   **Faktor Demografis:** Mahasiswa laki-laki dan mereka yang mendaftar pada usia yang lebih dewasa (*mature students*) cenderung memiliki risiko dropout yang lebih tinggi dibandingkan mahasiswi perempuan atau siswa lulusan SMA baru.
 
+### Data Preprocessing
+Untuk mengoptimalkan performa model, sistem menggunakan strategi **Hybrid Encoding**:
+*   **One-Hot Encoding**: Diterapkan pada fitur kategorikal dengan jumlah kategori rendah (≤ 2), seperti *Gender* dan status beasiswa.
+*   **Label Encoding**: Diterapkan pada fitur kategorikal dengan jumlah kategori yang lebih banyak (> 2), seperti *Course* dan *Nationality*. Hal ini bertujuan untuk mencegah ledakan dimensi fitur (*feature explosion*) namun tetap mempertahankan informasi kategori yang kaya.
+*   **Standard Scaling**: Dilakukan normalisasi pada seluruh fitur numerik dan fitur hitung (*count*) untuk memastikan model konvergen lebih cepat.
+
 ## Modelling & Evaluation
 Model terbaik yang dikembangkan menggunakan algoritma **Gradient Boosting** dengan optimasi hiperparameter melalui *Optuna*. Model ini dirancang untuk memaksimalkan deteksi risiko dini.
 
@@ -58,12 +64,6 @@ Berikut adalah performa model pada data uji:
 | **ROC-AUC** | 0.94 |
 
 > Model ini sangat handal dalam membedakan antara mahasiswa yang berisiko keluar (*Dropout*) dan yang tidak, dengan skor ROC-AUC mencapai 0.94.
-
-### Data Preprocessing
-Untuk mengoptimalkan performa model, sistem menggunakan strategi **Hybrid Encoding**:
-*   **One-Hot Encoding**: Diterapkan pada fitur kategorikal dengan jumlah kategori rendah (≤ 2), seperti *Gender* dan status beasiswa.
-*   **Label Encoding**: Diterapkan pada fitur kategorikal dengan jumlah kategori yang lebih banyak (> 2), seperti *Course* dan *Nationality*. Hal ini bertujuan untuk mencegah ledakan dimensi fitur (*feature explosion*) namun tetap mempertahankan informasi kategori yang kaya.
-*   **Standard Scaling**: Dilakukan normalisasi pada seluruh fitur numerik dan fitur hitung (*count*) untuk memastikan model konvergen lebih cepat.
 
 ### Feature Importance
 Berdasarkan analisis model Gradient Boosting, faktor-faktor utama yang paling memengaruhi kemungkinan mahasiswa *dropout* adalah:
