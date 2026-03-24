@@ -84,6 +84,9 @@ streamlit run app.py
 ```
 3. Buka URL yang muncul di terminal (biasanya `http://localhost:8501`).
 
+**Link Deployment:**
+[https://bpds-submission-2-dicoding.streamlit.app/](https://bpds-submission-2-dicoding.streamlit.app/)
+
 ## Conclusion
 Berdasarkan analisis data, penyebab utama *dropout* di Jaya Jaya Institut adalah **ketidakstabilan finansial** dan **kegagalan akademik pada tahun pertama**. Terdapat korelasi yang sangat kuat antara mahasiswa yang berhutang (*debtor*) dengan kegagalan dalam meluluskan jumlah SKS minimum pada semester 1 dan 2. Model Machine Learning kami berhasil menangkap pola ini dengan akurasi 89%, menjadikannya alat yang valid untuk sistem deteksi dini.
 
