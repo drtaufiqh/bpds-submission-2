@@ -26,6 +26,12 @@ Cakupan dari proyek ini meliputi:
 - Mengembangkan prototype sistem prediksi berbasis Streamlit yang dapat digunakan oleh pengguna non-teknis
 - Memberikan rekomendasi berbasis data (action items) untuk membantu institusi dalam menurunkan angka dropout
 
+## Data Understanding
+Dataset yang digunakan berasal dari "Students' Performance" yang mencakup informasi demografis, sosial-ekonomi, dan akademik. Tahap pemahaman data melibatkan audit kualitas untuk memastikan keandalan model:
+- **Missing Values**: Tidak terdeteksi adanya nilai yang hilang (*null values*).
+- **Duplicate Data**: Tidak ditemukan baris data ganda (*0 duplicate rows*).
+- **Invalid Values**: Seluruh fitur numerik kunci (seperti *Curricular units* dan *Age*) divalidasi memiliki nilai dalam rentang yang logis.
+
 #### Persiapan
 
 Sumber data: [Students' Performance](https://github.com/dicodingacademy/dicoding_dataset/blob/main/students_performance)
@@ -57,13 +63,13 @@ Model terbaik yang dikembangkan menggunakan algoritma **Gradient Boosting** deng
 Berikut adalah performa model pada data uji:
 | Metric | Score |
 | :--- | :--- |
-| **Accuracy** | 0.89 |
-| **Precision** | 0.86 |
-| **Recall (Dropout Detection)** | 0.79 |
-| **F1-Score** | 0.82 |
-| **ROC-AUC** | 0.94 |
+| **Accuracy** | 0.91 |
+| **Precision** | 0.90 |
+| **Recall (Dropout Detection)** | 0.87 |
+| **F1-Score** | 0.88 |
+| **ROC-AUC** | 0.96 |
 
-> Model ini sangat handal dalam membedakan antara mahasiswa yang berisiko keluar (*Dropout*) dan yang tidak, dengan skor ROC-AUC mencapai 0.94.
+> Model ini sangat handal dalam membedakan antara mahasiswa yang berisiko keluar (*Dropout*) dan yang lulus (*Graduate*), dengan skor ROC-AUC mencapai 0.96.
 
 ### Feature Importance
 Berdasarkan analisis model Gradient Boosting, faktor-faktor utama yang paling memengaruhi kemungkinan mahasiswa *dropout* adalah:
