@@ -94,11 +94,25 @@ streamlit run app.py
 [https://bpds-submission-2-drtaufiqh.streamlit.app/](https://bpds-submission-2-drtaufiqh.streamlit.app/)
 
 ## Conclusion
-Berdasarkan analisis data, penyebab utama *dropout* di Jaya Jaya Institut adalah **ketidakstabilan finansial** dan **kegagalan akademik pada tahun pertama**. Terdapat korelasi yang sangat kuat antara mahasiswa yang berhutang (*debtor*) dengan kegagalan dalam meluluskan jumlah SKS minimum pada semester 1 dan 2. Model Machine Learning kami berhasil menangkap pola ini dengan akurasi 89%, menjadikannya alat yang valid untuk sistem deteksi dini.
 
-### Rekomendasi Action Items
-Untuk menurunkan angka *dropout*, Jaya Jaya Institut disarankan untuk:
-1.  **Implementasi Early Warning System (EWS):** Mengintegrasikan model ini ke dalam sistem manajemen mahasiswa untuk menandai secara otomatis mahasiswa berisiko tinggi segera setelah nilai Semester 1 keluar.
-2.  **Intervensi Finansial Proaktif:** Memberikan bantuan khusus bagi mahasiswa berstatus *Debtor* melalui skema cicilan yang lebih fleksibel atau menghubungkan mereka dengan program beasiswa tambahan.
-3.  **Pendampingan Akademik Semester 1:** Memfungsikan dosen pembimbing akademik untuk melakukan bimbingan intensif bagi mahasiswa yang gagal meluluskan lebih dari 30% SKS di semester pertama.
-4.  **Dukungan Khusus Mahasiswa Dewasa:** Menyediakan fleksibilitas jadwal atau layanan dukungan konseling bagi mahasiswa berusia dewasa yang seringkali memiliki hambatan waktu antara pekerjaan dan studi.
+Proyek ini berhasil mengembangkan solusi berbasis data untuk memitigasi risiko *dropout* di Jaya Jaya Institut. Melalui pendekatan data science, kita dapat memahami pola kegagalan studi dan mengidentifikasi mahasiswa yang membutuhkan dukungan secara proaktif.
+
+### Pemilihan Model Terbaik
+Dari seluruh eksperimen pemodelan yang dilakukan (termasuk *Logistic Regression* dan *Random Forest*), model **Gradient Boosting** dipilih sebagai model final. Berikut adalah alasannya:
+- **Performa Unggul**: Model ini mencapai skor **ROC-AUC 0.96**, yang menunjukkan kemampuan luar biasa dalam membedakan antara mahasiswa yang akan *dropout* dan yang akan lulus.
+- **Deteksi Risiko Maksimal**: Dengan nilai **Recall sebesar 0.87**, model ini mampu menangkap sebagian besar kasus *dropout* potensial, meminimalkan jumlah mahasiswa berisiko yang tidak terdeteksi.
+- **Stabilitas**: Metrik **F1-Score (0.88)** menunjukkan keseimbangan yang baik antara presisi dan recall, menjadikannya handal untuk digunakan dalam operasional institusi.
+
+### Insight Utama
+Hasil analisis dan pemodelan memberikan beberapa temuan kunci:
+1.  **Prediktor Akademik Terkuat**: Keberhasilan meluluskan mata kuliah pada tahun pertama (khususnya **Curricular units 2nd sem approved**) adalah faktor tunggal paling berpengaruh. Mahasiswa yang gagal mendapatkan *approval* pada beban SKS di semester 2 memiliki peluang *dropout* yang sangat signifikan.
+2.  **Hambatan Finansial**: Status pembayaran biaya kuliah (*Tuition fees up to date*) dan status hutang (*Debtor*) menjadi pendorong utama kedua. Hal ini menunjukkan bahwa banyak kasus *dropout* tidak hanya disebabkan oleh masalah kemampuan akademik, tetapi juga kendala ekonomi.
+3.  **Risiko Demografis**: Mahasiswa laki-laki dan mereka yang mendaftar pada usia yang lebih dewasa (*mature students*) terdeteksi memiliki kerentanan lebih tinggi, kemungkinan karena tantangan penyesuaian sosial atau pembagian waktu antara beban kerja dan studi.
+
+### Implikasi dan Rekomendasi Action Items
+Implementasi model ini bukan hanya sekadar angka, melainkan alat pengambilan keputusan strategis. Berdasarkan temuan di atas, berikut adalah rekomendasi yang dapat ditindaklanjuti:
+
+1.  **Implementasi Early Warning System (EWS):** Mengintegrasikan model Gradient Boosting ke dalam sistem informasi akademik untuk memberikan alert otomatis kepada dosen pembimbing jika performa akademik semester 1 mahasiswa berada di bawah ambang batas (threshold).
+2.  **Optimasi Beasiswa dan Skema Pembayaran:** Fokuskan bantuan finansial atau diskon UKT pada mahasiswa yang memiliki record akademik baik namun terkendala status *debtor*. Hal ini memastikan potensi akademik tidak terbuang karena alasan biaya.
+3.  **Program Mentoring Khusus:** Memberikan pendampingan akademik intensif bagi mahasiswa di transisi semester 1 ke semester 2, karena periode ini merupakan fase kritis yang paling menentukan kelangsungan studi mereka.
+4.  **Kebijakan Inklusif untuk Mahasiswa Pendewasa:** Menyediakan fleksibilitas administratif bagi mahasiswa yang masuk di usia dewasa untuk membantu mereka menyeimbangkan tanggung jawab pribadi dengan target akademik.
